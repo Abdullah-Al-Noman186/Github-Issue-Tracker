@@ -1,4 +1,4 @@
-document.getElementById("Sign-Btn").addEventListener("click",function(){
+document.getElementById("Sign-Btn").addEventListener("click",function(event){
     event.preventDefault(); 
     const userName = document.getElementById("user-name" ).value;
     
