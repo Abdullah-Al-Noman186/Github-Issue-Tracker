@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>log in</title>
+
+    <!-- daisy Ui and CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <section class="justify-items-center items-center mt-[100px]">
+    <div class="border-base-300 rounded-box w-xs border m-5" >
+        <div class="pt-5 justify-items-center ">
+        <img src="/assets/github-logo.png" alt="" >
+        <h2 class="text-xl font-bold">GitHub Issues Tracker</h2>
+        <p class="text-sm text-[#64748B]">Sign in to manage your issues</p>
+         </div>
+
+        <form id="loginForm" class="fieldset  p-4">
+        <fieldset class="fieldset">
+         <label class="label font-bold text-black">Username</label>
+        <input id="user-name" type="text" class="input validator" placeholder="Enter Username" required />
+       <p class="validator-hint ">Default:admin</p>
+        </fieldset>
+
+        <span class="label font-bold text-black">Password</span>
+        <input id="Password" type="password" class="input validator" placeholder="Enter Password" required />
+        <span class="validator-hint ">Default:admin123</span>
+    </label>
+    <label class="fieldset">
+    
+      <button id="Sign-Btn" class="btn btn-primary mt-4" type="submit">Sign In</button>   
+     </form>
+
+
+     <p class="mt-5 px-[90px] text-[#64748B]">Demo Credentials:</p>
+
+      <div class="justify-items-center text-lg text-[#64748B]">
+        <p><span class=" text-black font-bold ">Username:</span> admin</p>
+        <p><span class=" text-black font-bold ">Password:</span> admin123</p>
+      </div>
+    </div>
+    </section>
+
+    <script src="/assets/login.js"></script>
+</body>
+</html>
