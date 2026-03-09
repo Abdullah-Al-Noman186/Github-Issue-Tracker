@@ -78,13 +78,26 @@ const loadIssueDetail =async(id) =>{
 
 const displayIssueDetails=(Issue)=>{
     const detailsBox =document.getElementById("details-container");
+        
+    
+  const statusColor = Issue.status === "open" ? "bg-green-700" : "bg-purple-700";
+  const statusText = Issue.status.charAt(0).toUpperCase() + Issue.status.slice(1);
+
+  let priorityColor = "";
+  switch(Issue.priority.toLowerCase()){
+    case "high": priorityColor = "bg-red-700"; break;
+    case "medium": priorityColor = "bg-yellow-500"; break;
+    default: priorityColor = "bg-gray-500";
+  }
+
+
     detailsBox.innerHTML= `
     <div id="details-container" class="space-y-3">
     <div class="">
             <h2 class="text-2xl font-bold">${Issue.title}</h2>
           </div>
           <div class="flex space-x-2">
-            <p class="bg-green-700 text-white px-2 py-1 rounded-xl">Opened</p>
+            <p class=${statusColor} text-white px-2 py-1 rounded-3xl">${statusText}</p>
             <p>Opened by ${Issue.author}</p>
             <p>22/02/2026</p>
           </div>
@@ -120,7 +133,7 @@ const displayIssueDetails=(Issue)=>{
              </div>
              <div >
                 <p>Priority:</p>
-                 <p class="bg-red-700 text-white px-2 py-1 rounded-3xl">HIGH</p>
+                 <p class="${priorityColor}  text-white px-2 py-1 rounded-3xl">${Issue.priority.toUpperCase()}</p>
              </div>
              
           </div>
@@ -150,6 +163,13 @@ const displayIssues=(Issues)=>{
       borderColor = "border-t-4 border-purple-500";
     }
 
+    let priorityColor = "";
+  switch(Issue.priority.toLowerCase()){
+    case "high": priorityColor = "bg-red-200 text-red-800"; break;
+    case "medium": priorityColor = "bg-yellow-200 text-yellow-800"; break;
+    default: priorityColor = "bg-gray-200 text-gray-800";
+  }
+
 
         const IssueDiv=document.createElement("div");
         
@@ -158,7 +178,7 @@ const displayIssues=(Issues)=>{
                 <div class="flex justify-between ">
                     <img src="${Issue.status.toLowerCase() === 'open' ? "/assets/Open-Status.png" : "/assets/Closed-Status.png"}" alt="">
                     
-                    <p class="bg-red-200 text-red-700 px-6 py-1 rounded-3xl">${Issue.priority}</p>
+                    <p class="${priorityColor} px-6 py-1 rounded-3xl">${Issue.priority.toUpperCase()}</p>
                 </div>
                 <h2 class="text-xl font-semibold">${Issue.title}</h2>
                 <p class="text-[#64748B]">${Issue.description}</p>
