@@ -9,6 +9,8 @@ const allIssues=()=>{
             displayIssues(allIssuesData);
             updateIssueCount(allIssuesData.length);
             setActiveButton('all');
+
+            toggleLoader(false);
     } );
 }
 
@@ -30,10 +32,14 @@ const filterIssues = (status) =>{
 }
 
 const searchIssues = (text) => {
+   toggleLoader(true);
+
   fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${text}`)
     .then(res => res.json())
     .then(data => {
-      displayIssues(data.data); // show searched issues
+      displayIssues(data.data);
+      
+      toggleLoader(false);
     });
 };
 
@@ -50,7 +56,16 @@ document
     }
 });
 
+const toggleLoader = (show) =>{
+            const loader = document.getElementById("loader")
 
+            if (show) {
+                loader.classList.remove("hidden");
+            } 
+            else {
+                loader.classList.add("hidden");
+            }
+}
 
 const loadIssueDetail =async(id) =>{
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
