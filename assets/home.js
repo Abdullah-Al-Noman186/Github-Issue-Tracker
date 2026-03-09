@@ -125,10 +125,21 @@ const displayIssues=(Issues)=>{
    
       for(let Issue of Issues){
         console.log(Issue);
+
+        let borderColor = "";
+
+    if (Issue.status === "open") {
+      borderColor = "border-t-4 border-green-500";
+    } 
+    else if (Issue.status === "closed") {
+      borderColor = "border-t-4 border-purple-500";
+    }
+
+
         const IssueDiv=document.createElement("div");
         
         IssueDiv.innerHTML= `
-                <div onclick="loadIssueDetail(${Issue.id})"  class=" space-y-3 shadow-xl p-4 rounded-3xl border-t-green-700">
+                <div onclick="loadIssueDetail(${Issue.id})"  class=" space-y-3 shadow-xl p-4 rounded-3xl ${borderColor}">
                 <div class="flex justify-between ">
                     <img src="${Issue.status.toLowerCase() === 'open' ? "/assets/Open-Status.png" : "/assets/Closed-Status.png"}" alt="">
                     
