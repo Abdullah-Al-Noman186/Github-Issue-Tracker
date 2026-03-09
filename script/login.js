@@ -6,7 +6,7 @@ document.getElementById("Sign-Btn").addEventListener("click", function(event){
 
     if(userName === "admin" && password === "admin123"){
         alert("Login successful");
-        window.location.assign("./home.html");
+        window.location.assign("home.html");
     }
     else{
         alert("Invalid username or password");
